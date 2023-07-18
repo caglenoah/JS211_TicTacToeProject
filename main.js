@@ -34,7 +34,9 @@ const printBoard = () => {
 
 const checkForWin = () => {
   if(horizontalWin() || verticalWin() || diagonalWin()) {
-    window.alert(`Player ${currentMarker} won!`)
+    console.log(`Player ${playerTurn} won!`)
+    return true
+
   } else {
     changeMarker()
   }
@@ -103,6 +105,23 @@ const getPrompt = () => {
   });
 }
 
+const ticTacToe = (row,column) => {
+  if (board[row][column] === ' ') {
+    board[row][column] = playerTurn
+    checkForWin()
+  } else 
+  {
+    console.log("please select empty space")
+    }
+}
+
+const changeMarker = () => {
+  if(playerTurn === "X"){
+    playerTurn = "O"
+  } else {
+    playerTurn = "X"
+  }
+}
 
 // Unit Tests
 // You use them run the command: npm test main.js
